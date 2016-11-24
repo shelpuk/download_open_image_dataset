@@ -8,13 +8,14 @@ def get_open_images(description_file, destination_folder, block_size, thread_id,
         with open(log_file+str(thread_id)+'.log', 'wb') as l:
 
             image = urllib.URLopener()
-            num_images = 0
             offset = 0
 
             if load_autosave:
                 with open(checkpoint_file+str(thread_id), 'r') as af:
                     lines = af.readlines()
                     offset = int(lines[0]) + 1
+
+            num_images = offset
 
             line = f.readline()
 
